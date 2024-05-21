@@ -1,0 +1,5 @@
+id;szoba_szam;szoba_meret;agyak_szama;terasz;haziallat
+1;A101;25;1;true;false
+2;B202;30;2;false;true
+3;C303;35;2;true;true
+4;D404;40;3;false;false

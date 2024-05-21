@@ -1,0 +1,125 @@
+<div class="container">
+    <div class="card p-3 mt-2 mb-2">
+        <h2>Szobák</h2>
+        <table>
+            <thead>
+              <tr>
+                <th *ngFor="let col of roomcol">
+                  {{ col.text }}
+                </th>
+                <th>
+                  Műveletek
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let room of rooms">
+                <td *ngFor="let col of roomcol">
+                  {{ room[col.key] }}
+                </td>
+                <td>
+                    <div>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modifymodalroom" (click)="showCoursesDetails(room)" >
+                            Szerkesztés
+                      </button>
+                    </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="modal fade" id="modifymodalroom" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Szobák</h1>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="room.szoba_szam" class="form-label">Szoba Szám</label>
+                    <input *ngIf="selectedRoom" [(ngModel)]="selectedRoom.szoba_szam" type="text" class="form-control">
+                </div>            
+                <div class="mb-3">
+                    <label for="room.szoba_merete" class="form-label">Szoba Szám</label>
+                    <input *ngIf="selectedRoom" [(ngModel)]="selectedRoom.szoba_merete" type="text" class="form-control">
+                </div>            
+                <div class="mb-3">
+                    <label for="room.agyak_szama" class="form-label">Szoba Szám</label>
+                    <input *ngIf="selectedRoom" [(ngModel)]="selectedRoom.agyak_szama" type="text" class="form-control">
+                </div>            
+                <div class="mb-3">
+                    <label for="room.terasz" class="form-label">Szoba Szám</label>
+                    <input *ngIf="selectedRoom" [(ngModel)]="selectedRoom.terasz" type="text" class="form-control">
+                </div>            
+                <div class="mb-3">
+                    <label for="room.haziallat" class="form-label">Szoba Szám</label>
+                    <input *ngIf="selectedRoom" [(ngModel)]="selectedRoom.haziallat" type="text" class="form-control">
+                </div>            
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezár</button>
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal" (click)="updateRoom(selectedRoom.id, selectedRoom)">Mentés</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteRoom(selectedRoom.id)">Törlés</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="card p-3 mt-2 mb-2">
+        <h2>Foglalók</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th *ngFor="let col of rentercol">
+                        {{col.text}}
+                    </th>
+                    <th>
+                        Műveletek
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let renter of renters">
+                    <td *ngFor="let col of rentercol">
+                      {{ renter[col.key] }}
+                    </td>
+                    <td>
+                        <div>
+                            <button type="button" class="btn btn-success me-2">Mentés</button>
+                            <button type="button" class="btn btn-danger me-2">Törlés</button>
+                            <button type="button" class="btn btn-warning">Új adat</button>
+                        </div>
+                    </td>
+                  </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="card p-3 mt-2 mb-2">
+        <h2>Foglalások</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th *ngFor="let col of rentingcol">
+                        {{col.text}}
+                    </th>
+                    <th>
+                        Műveletek
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let renting of rentings">
+                    <td *ngFor="let col of rentingcol">
+                        {{ getNestedValue(renting, col.key) }}
+                    </td>
+                    <td>
+                        <div>
+                            <button type="button" class="btn btn-success me-2">Mentés</button>
+                            <button type="button" class="btn btn-danger me-2">Törlés</button>
+                            <button type="button" class="btn btn-warning">Új adat</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
